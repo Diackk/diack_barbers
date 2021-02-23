@@ -306,11 +306,11 @@ function SetupShopPrompt()
     end)
 end
 
-AddEventHandler('diack_coachdealer:hasEnteredMarker', function(zone)
+AddEventHandler('diack_barber:hasEnteredMarker', function(zone)
     currentZone = zone
 end)
 
-AddEventHandler('diack_coachdealer:hasExitedMarker', function(zone)
+AddEventHandler('diack_barber:hasExitedMarker', function(zone)
     if active == true then
         PromptSetEnabled(ShopPrompt, false)
         PromptSetVisible(ShopPrompt, false)
@@ -337,12 +337,12 @@ Citizen.CreateThread(function()
 
 		if isInMarker and not hasAlreadyEnteredMarker then
 			hasAlreadyEnteredMarker = true
-			TriggerEvent('diack_coachdealer:hasEnteredMarker', currentZone)
+			TriggerEvent('diack_barberr:hasEnteredMarker', currentZone)
 		end
 
 		if not isInMarker and hasAlreadyEnteredMarker then
 			hasAlreadyEnteredMarker = false
-			TriggerEvent('diack_coachdealer:hasExitedMarker', lastZone)
+			TriggerEvent('diack_barber:hasExitedMarker', lastZone)
 		end
 
     end
