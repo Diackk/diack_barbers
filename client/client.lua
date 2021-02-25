@@ -114,9 +114,11 @@ function barberMenu()
     end,
 	function(data, menu)
 		print("closed Menu")
-        TriggerServerEvent("redemrp_skin:loadSkin")
 		menu.close()
-        ClearPedTasks(PlayerPedId())
+        if ClearPedTasks(PlayerPedId()) then
+            Citizen.Wait(5000)
+            TriggerServerEvent('redemrp_skin:loadSkin')
+        end
 	end,
 	function(data, menu)
         currenthairIndex = data.current.value
@@ -192,6 +194,7 @@ Citizen.CreateThread(function()
 
             if WarMenu.IsMenuAboutToBeClosed() then
                 ClearPedTasks(GetPlayerPed())
+                TriggerEvent("redemrp_db:retrieveSkin")
             end
 
             WarMenu.Display()
@@ -370,11 +373,11 @@ Citizen.CreateThread(function()
 
 
                 if IsPlayerNearCoords(-814.263, -1364.779, 43.750) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -815.3, -1367.018, 43.50, 90.60, 0, 0, 1)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -815.3, -1367.018, 43.50, 90.60, 10000, true, 0)
                 elseif IsPlayerNearCoords(-307.45, 812.17, 118.98) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -306.62, 813.56, 118.75, 90.60, 0, 0, 1)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -306.62, 813.56, 118.75, 90.60, 10000, true, 0)
                 elseif IsPlayerNearCoords(2655.05, -1179.92, 53.28) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), 2655.38, -1180.92, 53.00, 182.8, 0, 0, 1)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), 2655.38, -1180.92, 53.00, 182.8, 10000, true, 0)
                 end
 
                          
