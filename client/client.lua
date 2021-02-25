@@ -337,7 +337,7 @@ Citizen.CreateThread(function()
 
 		if isInMarker and not hasAlreadyEnteredMarker then
 			hasAlreadyEnteredMarker = true
-			TriggerEvent('diack_barberr:hasEnteredMarker', currentZone)
+			TriggerEvent('diack_barber:hasEnteredMarker', currentZone)
 		end
 
 		if not isInMarker and hasAlreadyEnteredMarker then
