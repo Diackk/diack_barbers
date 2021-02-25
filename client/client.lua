@@ -262,7 +262,7 @@ function IsPlayerNearCoords(x, y, z)
     local playerx, playery, playerz = table.unpack(GetEntityCoords(GetPlayerPed(), 0))
     local distance = GetDistanceBetweenCoords(playerx, playery, playerz, x, y, z, true)
 
-    if distance < 5 then
+    if distance < 10 then
         return true
     end
 end
@@ -373,11 +373,11 @@ Citizen.CreateThread(function()
 
 
                 if IsPlayerNearCoords(-814.263, -1364.779, 43.750) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -815.3, -1367.018, 43.50, 90.60, 10000, true, 0)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -815.3, -1367.018, 43.50, 90.60, 100000, true, 0)
                 elseif IsPlayerNearCoords(-307.45, 812.17, 118.98) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -306.62, 813.56, 118.75, 90.60, 10000, true, 0)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), -306.45, 813.60, 118.95, 99.96, 100000, true, 0)
                 elseif IsPlayerNearCoords(2655.05, -1179.92, 53.28) then
-                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), 2655.38, -1180.92, 53.00, 182.8, 10000, true, 0)
+                    TaskStartScenarioAtPosition(GetPlayerPed(), GetHashKey("PROP_PLAYER_BARBER_SEAT"), 2655.30, -1180.95, 53.01, 182.8, 100000, true, 0)
                 end
 
                          
