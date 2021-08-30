@@ -14,7 +14,7 @@ AddEventHandler("diack_barbers:SaveHair", function(index)
 		
         if user.getMoney() >= price then
                 user.removeMoney(price)
-		MySQL.Async.fetchAll("SELECT skin FROM skins WHERE identifier=(@identifier)", {['@identifier'] = identifier}, function(data)
+		MySQL.Async.fetchAll("SELECT skin FROM skins WHERE identifier=(@identifier) AND charid=(@characterid)", {['@identifier'] = identifier, ['@characterid'] = charid}, function(data)
 			local skin = {}
 
 			print("Barbers: Hair saved in database, " .. tostring(index))
@@ -22,7 +22,7 @@ AddEventHandler("diack_barbers:SaveHair", function(index)
 			skin = json.decode(data[1].skin)
 			skin['hair'] = tostring(index)
 
-			MySQL.Async.execute("UPDATE skins SET skin=(@skin) WHERE identifier=(@identifier)", {['@identifier'] = identifier, ['@skin'] = json.encode(skin)})
+			MySQL.Async.execute("UPDATE skins SET skin=(@skin) WHERE identifier=(@identifier) AND charid=(@characterid)", {['@identifier'] = identifier, ['@skin'] = json.encode(skin), ['@characterid'] = charid})
 		end)
 		TriggerClientEvent('redem_roleplay:Tip', _source, "You have (~t6~purchased~t~) a new style", 4000)  
 		else
@@ -44,7 +44,7 @@ AddEventHandler("diack_barbers:SaveBeard", function(index)
         if user.getMoney() >= price then
                 user.removeMoney(price)
 
-		MySQL.Async.fetchAll("SELECT skin FROM skins WHERE identifier=(@identifier)", {['@identifier'] = identifier}, function(data)
+		MySQL.Async.fetchAll("SELECT skin FROM skins WHERE identifier=(@identifier) AND charid=(@characterid)", {['@identifier'] = identifier, ['@characterid'] = charid}, function(data)
 			local skin = {}
 
 			print("Barbers: Beard saved in database, " .. tostring(index))
@@ -52,7 +52,7 @@ AddEventHandler("diack_barbers:SaveBeard", function(index)
 			skin = json.decode(data[1].skin)
 			skin['beard'] = tostring(index)
 
-			MySQL.Async.execute("UPDATE skins SET skin=(@skin) WHERE identifier=(@identifier)", {['@identifier'] = identifier, ['@skin'] = json.encode(skin)})
+			MySQL.Async.execute("UPDATE skins SET skin=(@skin) WHERE identifier=(@identifier) AND charid=(@characterid)", {['@identifier'] = identifier, ['@skin'] = json.encode(skin), ['@characterid'] = charid})
 		end)
 		TriggerClientEvent('redem_roleplay:Tip', _source, "You have (~t6~purchased~t~) a new style", 4000)  
 		else
